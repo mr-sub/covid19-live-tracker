@@ -8,17 +8,48 @@
 
 import Cocoa
 
+
+class ListOfStatistics: NSView {
+
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
+    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let popover = NSPopover()
+    var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        if let button = statusItem.button {
+            button.action = #selector(AppDelegate.togglePopover(_:))
+            button.title = "🌯"
+        }
+        popover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "ViewController") as? NSViewController
+        eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
+            if let strongSelf = self, strongSelf.popover.isShown {
+                strongSelf.closePopover(sender: event)
+            }
+        }
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    @objc func togglePopover(_ sender: Any?) {
+        if popover.isShown {
+            closePopover(sender: sender)
+        } else {
+            showPopover(sender: sender)
+        }
+    }
+
+    func showPopover(sender: Any?) {
+        if let button = statusItem.button {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            eventMonitor?.start()
+        }
+    }
+
+    func closePopover(sender: Any?) {
+        popover.performClose(sender)
+        eventMonitor?.stop()
     }
 
     // MARK: - Core Data stack
@@ -117,6 +148,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
+
+}
+
+extension AppDelegate: NSMenuDelegate {
+//    func menuWillOpen(_ menu: NSMenu) {
+//
+//        popover.show(relativeTo: statusBarItem.button!.bounds, of: statusBarItem.button!, preferredEdge: .maxY)
+//
+//       // statusBarItem.popUpMenu(<#T##menu: NSMenu##NSMenu#>)
+//
+//    }
+//
+//    func menuDidClose(_ menu: NSMenu) {
+//
+//    }
+//
+//    func menu(_ menu: NSMenu, willHighlight item: NSMenuItem?) {
+//
+//    }
+//
+//    func menuNeedsUpdate(_ menu: NSMenu) {
+//
+//    }
+//
+//    func menu(_ menu: NSMenu, update item: NSMenuItem, at index: Int, shouldCancel: Bool) -> Bool {
+//        return true
+//    }
 
 }
 
