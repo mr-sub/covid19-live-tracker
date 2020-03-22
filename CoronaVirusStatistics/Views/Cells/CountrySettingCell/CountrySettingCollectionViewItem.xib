@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CountrySettingCollectionViewItem" customModule="CoronaVirusStatistics" customModuleProvider="target">
+            <connections>
+                <outlet property="checkMark" destination="bMC-hn-vWV" id="UrR-lq-3Bf"/>
+                <outlet property="flagImageView" destination="j9J-Z3-fwo" id="tby-rd-gz0"/>
+                <outlet property="titleTextField" destination="tVN-l1-7IK" id="7jF-nF-lp5"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="91"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j9J-Z3-fwo">
+                    <rect key="frame" x="15" y="31" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="012-2h-EJ5"/>
+                        <constraint firstAttribute="height" constant="30" id="dyh-aQ-esa"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="AD" id="6Ke-BA-e9T"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tVN-l1-7IK">
+                    <rect key="frame" x="61" y="38" width="369" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" drawsBackground="YES" id="raA-QW-kUt">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" red="0.10196078568696976" green="0.66274511814117432" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bMC-hn-vWV">
+                    <rect key="frame" x="444" y="37" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="YqZ-7c-d0b"/>
+                        <constraint firstAttribute="height" constant="14" id="vpy-gk-nc0"/>
+                    </constraints>
+                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="mzk-sl-Vfr">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="didSelectCheckmarkAction:" target="-2" id="Ax4-i7-0AM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="bMC-hn-vWV" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="BBS-97-1iF"/>
+                <constraint firstAttribute="trailing" secondItem="bMC-hn-vWV" secondAttribute="trailing" constant="20" id="Ehf-qn-BJJ"/>
+                <constraint firstItem="j9J-Z3-fwo" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="GmC-Wf-2Ly"/>
+                <constraint firstItem="bMC-hn-vWV" firstAttribute="leading" secondItem="tVN-l1-7IK" secondAttribute="trailing" constant="16" id="fdL-hs-hBr"/>
+                <constraint firstItem="tVN-l1-7IK" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="sKR-Yc-dE3"/>
+                <constraint firstItem="tVN-l1-7IK" firstAttribute="leading" secondItem="j9J-Z3-fwo" secondAttribute="trailing" constant="16" id="ydn-oA-I5L"/>
+                <constraint firstItem="j9J-Z3-fwo" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="15" id="zy4-bu-PKR"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="63.5"/>
+        </customView>
+        <customObject id="XjF-Cl-HLL" customClass="CountrySettingCollectionViewItem" customModule="CoronaVirusStatistics" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="AD" width="21" height="15"/>
+    </resources>
+</document>

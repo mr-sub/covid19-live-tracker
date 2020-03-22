@@ -21,6 +21,7 @@ struct CountryInfo: Decodable {
 class CountriesManager {
     static let shared = CountriesManager()
     private var data: [String: CountryInfo] = [:]
+    var allCountries: [CountryInfo] = []
 
     init() {
         if let url = Bundle.main.url(forResource: "countryCodes", withExtension: "json") {
@@ -29,6 +30,7 @@ class CountriesManager {
                 let decoder = JSONDecoder()
                 let content = try decoder.decode([CountryInfo].self, from: jsonData)
                 content.forEach({ data[$0.name] = $0 })
+                allCountries = content
             } catch {}
         }
     }
