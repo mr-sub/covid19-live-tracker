@@ -20,10 +20,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(AppDelegate.togglePopover(_:))
             button.image = #imageLiteral(resourceName: "covid")
         }
-        popover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "ViewController") as? NSViewController
+        let contentViewController = NSStoryboard(name: "Main", bundle: nil)
+            .instantiateController(withIdentifier: "COVID19ViewController") as? COVID19ViewController
+        popover.contentViewController = contentViewController
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
             if let strongSelf = self, strongSelf.popover.isShown {
-                strongSelf.closePopover(sender: event)
+                contentViewController?.closeAllPopovers(completion: {
+                    strongSelf.closePopover(sender: event)
+                })
             }
         }
     }

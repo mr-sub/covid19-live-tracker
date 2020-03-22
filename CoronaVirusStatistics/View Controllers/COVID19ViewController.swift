@@ -19,7 +19,6 @@ class COVID19ViewController: NSViewController {
     @IBOutlet weak private var totalDeathsTextField: NSTextField!
     @IBOutlet weak private var totalRecoveredTextField: NSTextField!
 
-
     private var allItems: [COVID19CountryStatistics] = [] {
         didSet {
             if let selectedCountries = Settings.selectedCountries {
@@ -37,7 +36,8 @@ class COVID19ViewController: NSViewController {
     private var items: [COVID19CountryStatistics] = [] {
         didSet { collectionView.reloadData() }
     }
-    
+
+    private var popoverDidClose: (() -> Void)?
     private var oldStatistics = [COVID19CountryStatistics]()
     private lazy var popover: NSPopover = {
         let popover = NSPopover()
@@ -125,6 +125,16 @@ class COVID19ViewController: NSViewController {
         }
     }
 
+    func closeAllPopovers(completion: @escaping () -> Void) {
+        guard popover.isShown else {
+            completion()
+            return
+        }
+        self.popoverDidClose = completion
+        popover.delegate = self
+        popover.performClose(nil)
+    }
+
     func closePopover(sender: Any?) {
         popover.performClose(sender)
     }
@@ -150,6 +160,13 @@ extension COVID19ViewController: NSCollectionViewDelegate, NSCollectionViewDataS
 
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
         return NSSize(width: collectionView.bounds.width, height: 110)
+    }
+}
+
+extension COVID19ViewController: NSPopoverDelegate {
+    func popoverDidClose(_ notification: Notification) {
+        popoverDidClose?()
+        popover.delegate = nil
     }
 }
 
