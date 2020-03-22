@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = statusItem.button {
             button.action = #selector(AppDelegate.togglePopover(_:))
-            button.title = "🌯"
+            button.image = #imageLiteral(resourceName: "covid")
         }
         popover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "ViewController") as? NSViewController
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in

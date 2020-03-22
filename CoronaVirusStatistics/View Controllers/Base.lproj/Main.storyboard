@@ -46,19 +46,19 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="CoronaVirusStatistics" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="COVID19ViewController" customModule="CoronaVirusStatistics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="317" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLK-Xa-bu3">
-                                <rect key="frame" x="20" y="66" width="440" height="184"/>
+                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLK-Xa-bu3">
+                                <rect key="frame" x="20" y="66" width="277" height="219"/>
                                 <clipView key="contentView" id="4tV-z9-egv">
-                                    <rect key="frame" x="1" y="1" width="438" height="182"/>
+                                    <rect key="frame" x="1" y="1" width="275" height="217"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView id="Z54-j2-6tE">
-                                            <rect key="frame" x="0.0" y="0.0" width="438" height="158"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="275" height="217"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="hM0-HE-fea">
                                                 <size key="itemSize" width="50" height="50"/>
@@ -72,24 +72,113 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="dCf-Ue-gnF">
-                                    <rect key="frame" x="1" y="144" width="233" height="15"/>
+                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="eK5-9X-22g">
-                                    <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                    <rect key="frame" x="243" y="1" width="16" height="199"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fKu-VD-JBF">
+                                <rect key="frame" x="10" y="367" width="297" height="23"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="COVID19 LIVE" drawsBackground="YES" id="MMf-td-IgQ">
+                                    <font key="font" size="20" name="HelveticaNeue"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textFieldCell>
+                            </textField>
+                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-Oi-2jm">
+                                <rect key="frame" x="20" y="336" width="277" height="16"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Ew-jd-xnj">
+                                        <rect key="frame" x="-2" y="0.0" width="79" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Total Cases" id="iIn-x8-Bba">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ovh-Zi-AdF">
+                                        <rect key="frame" x="83" y="0.0" width="84" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Total Deaths" id="sBb-Gp-DKR">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xap-zz-dwe">
+                                        <rect key="frame" x="173" y="0.0" width="106" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Total Recovered" id="vQa-wB-9sT">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hFg-Xm-5Xa">
+                                <rect key="frame" x="18" y="305" width="79" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0" id="HuC-8s-Llq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aNv-4c-kcY">
+                                <rect key="frame" x="103" y="305" width="84" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0" id="5nx-E3-pJh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O6S-g4-4C0">
+                                <rect key="frame" x="193" y="305" width="106" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0" id="8Dq-FK-vYK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="aNv-4c-kcY" firstAttribute="leading" secondItem="Ovh-Zi-AdF" secondAttribute="leading" id="5JN-a9-6qL"/>
+                            <constraint firstItem="fKu-VD-JBF" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="5oh-57-Ir4"/>
+                            <constraint firstItem="O6S-g4-4C0" firstAttribute="leading" secondItem="xap-zz-dwe" secondAttribute="leading" id="AEk-F3-UNk"/>
                             <constraint firstItem="bLK-Xa-bu3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Bgv-KT-e9Y"/>
+                            <constraint firstItem="bLK-Xa-bu3" firstAttribute="top" secondItem="hFg-Xm-5Xa" secondAttribute="bottom" constant="20" id="CcX-6l-tMg"/>
+                            <constraint firstAttribute="trailing" secondItem="fKu-VD-JBF" secondAttribute="trailing" constant="10" id="D5f-Qu-0dK"/>
+                            <constraint firstItem="aNv-4c-kcY" firstAttribute="centerY" secondItem="hFg-Xm-5Xa" secondAttribute="centerY" id="HSb-Z4-VRY"/>
+                            <constraint firstItem="ZGA-Oi-2jm" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="LR6-dJ-vxQ"/>
                             <constraint firstAttribute="bottom" secondItem="bLK-Xa-bu3" secondAttribute="bottom" constant="66" id="Msw-6c-5ru"/>
+                            <constraint firstItem="ZGA-Oi-2jm" firstAttribute="top" secondItem="fKu-VD-JBF" secondAttribute="bottom" constant="15" id="MyQ-u6-nXZ"/>
+                            <constraint firstItem="hFg-Xm-5Xa" firstAttribute="leading" secondItem="1Ew-jd-xnj" secondAttribute="leading" id="UPc-G9-ha0"/>
                             <constraint firstAttribute="trailing" secondItem="bLK-Xa-bu3" secondAttribute="trailing" constant="20" symbolic="YES" id="VrD-zX-pXO"/>
-                            <constraint firstItem="bLK-Xa-bu3" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="tym-T8-Gm2"/>
+                            <constraint firstAttribute="trailing" secondItem="ZGA-Oi-2jm" secondAttribute="trailing" constant="20" id="foa-TW-L7Y"/>
+                            <constraint firstItem="O6S-g4-4C0" firstAttribute="trailing" secondItem="xap-zz-dwe" secondAttribute="trailing" id="j70-6Q-w6v"/>
+                            <constraint firstItem="aNv-4c-kcY" firstAttribute="trailing" secondItem="Ovh-Zi-AdF" secondAttribute="trailing" id="pGC-Wu-MOj"/>
+                            <constraint firstItem="fKu-VD-JBF" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="pH0-3Q-aaM"/>
+                            <constraint firstItem="O6S-g4-4C0" firstAttribute="centerY" secondItem="hFg-Xm-5Xa" secondAttribute="centerY" id="qDb-XP-fiY"/>
+                            <constraint firstItem="hFg-Xm-5Xa" firstAttribute="top" secondItem="ZGA-Oi-2jm" secondAttribute="bottom" constant="15" id="tGk-eI-XsB"/>
+                            <constraint firstItem="hFg-Xm-5Xa" firstAttribute="trailing" secondItem="1Ew-jd-xnj" secondAttribute="trailing" id="zPn-p6-SKI"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Z54-j2-6tE" id="g3D-uS-LqD"/>
+                        <outlet property="totalCasesTextField" destination="hFg-Xm-5Xa" id="5vg-mr-b1l"/>
+                        <outlet property="totalDeathsTextField" destination="aNv-4c-kcY" id="hEb-dg-Vt7"/>
+                        <outlet property="totalRecoveredTextField" destination="O6S-g4-4C0" id="PEE-5q-Q0z"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CountryStatistics: Codable {
+struct COVID19CountryStatistics: BaseCOVID19StatisticsProtocol, Codable {
     let country: String
     let cases: Int
     let todayCases: Int
