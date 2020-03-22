@@ -19,6 +19,7 @@ class COVID19ViewController: NSViewController {
     private var items: [COVID19CountryStatistics] = [] {
         didSet { collectionView.reloadData() }
     }
+    private var oldStatistics = [COVID19CountryStatistics]()
 
     @IBOutlet weak private var totalCasesTextField: NSTextField!
     @IBOutlet weak private var totalDeathsTextField: NSTextField!
@@ -26,6 +27,9 @@ class COVID19ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.items = COVID19StatisticsManager.cachedCountriesStatistics
+        self.oldStatistics = self.items
 
         updateTotalStatisticsUI(totalCasesTextField: totalCasesTextField,
                                 totalDeathsTextField: totalDeathsTextField,
@@ -50,14 +54,14 @@ class COVID19ViewController: NSViewController {
         APIClient.shared.getStatistics { (result) in
             switch result {
             case .success(let items):
+                self.oldStatistics = self.items
                 self.items = items
-                print(items)
+                COVID19StatisticsManager.cache(statistics: items)
             case .failure(let error):
                 print(error)
             }
         }
     }
-
 }
 
 extension COVID19ViewController: NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout {
@@ -69,12 +73,13 @@ extension COVID19ViewController: NSCollectionViewDelegate, NSCollectionViewDataS
         let stat = self.items[indexPath.item]
         let cell = collectionView.makeItem(withIdentifier: CountryCollectionViewItem.identifier,
                                            for: indexPath) as! CountryCollectionViewItem
-        cell.handle(newStatistics: stat)
+        let oldStat = oldStatistics.first(where: { $0.country == stat.country })
+        cell.handle(newStatistics: stat, oldStatistics: oldStat)
         return cell
     }
 
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return NSSize(width: collectionView.bounds.width, height: 100)
+        return NSSize(width: collectionView.bounds.width, height: 110)
     }
 }
 

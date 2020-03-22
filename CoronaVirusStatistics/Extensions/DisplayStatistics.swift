@@ -45,15 +45,15 @@ func updateTotalStatisticsUI(
         if diff.newValues {
             if diff.newCases > 0 {
                 totalCasesTextField.textColor = .activeCases
-                totalCasesTextField.stringValue = newCasesStr + "(+\(diff.newCases))"
+                totalCasesTextField.stringValue = newCasesStr + "\n(+\(formatter.string(from: NSNumber(value: diff.newCases))!))"
             }
             if diff.newDeaths > 0 {
                 totalDeathsTextField.textColor = .activeDeaths
-                totalDeathsTextField.stringValue = newDeathsStr + "(+\(diff.newDeaths))"
+                totalDeathsTextField.stringValue = newDeathsStr + "\n(+\(formatter.string(from: NSNumber(value: diff.newDeaths))!))"
             }
             if diff.newRecovered > 0 {
                 totalRecoveredTextField.textColor = .activeRecovered
-                totalRecoveredTextField.stringValue = newRecoveredStr + "(+\(diff.newRecovered))"
+                totalRecoveredTextField.stringValue = newRecoveredStr + "\n(+\(formatter.string(from: NSNumber(value: diff.newRecovered))!))"
             }
         }
     }

@@ -27,9 +27,17 @@ struct COVID19Statistics {
 
 struct COVID19StatisticsManager {
     private static let totalStatFileName = "total_stat.json"
+    private static let countriesStatFileName = "countries_stat.json"
+
     static func cache(statistics: COVID19TotalStatistics) {
         guard let jsonData = try? JSONEncoder().encode(statistics) else { return }
         let pathToFile = documentsDirectory.appendingPathComponent(totalStatFileName)
+        try? jsonData.write(to: pathToFile)
+    }
+
+    static func cache(statistics: [COVID19CountryStatistics]) {
+        guard let jsonData = try? JSONEncoder().encode(statistics) else { return }
+        let pathToFile = documentsDirectory.appendingPathComponent(countriesStatFileName)
         try? jsonData.write(to: pathToFile)
     }
 
@@ -39,6 +47,15 @@ struct COVID19StatisticsManager {
             let jsonData = try? Data(contentsOf: pathToFile),
             let result = try? JSONDecoder().decode(COVID19TotalStatistics.self, from: jsonData)
             else { return nil }
+        return result
+    }
+
+    static var cachedCountriesStatistics: [COVID19CountryStatistics] {
+        let pathToFile = documentsDirectory.appendingPathComponent(countriesStatFileName)
+        guard
+            let jsonData = try? Data(contentsOf: pathToFile),
+            let result = try? JSONDecoder().decode([COVID19CountryStatistics].self, from: jsonData)
+            else { return [] }
         return result
     }
 
