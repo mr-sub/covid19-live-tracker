@@ -60,7 +60,7 @@ struct COVID19StatisticsManager {
     }
 
     private static var documentsDirectory: URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let paths = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
