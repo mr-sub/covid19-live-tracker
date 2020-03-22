@@ -44,7 +44,30 @@ class CountriesManager {
             return data["Reunion"]
         } else if countryName == "U.S. Virgin Islands" {
             return data["Virgin Islands, U.S."]
+        } else if countryName == "Sint Maarten" {
+            return data["Saint Martin"]
+        } else if countryName == "St. Barth" {
+            return data["Saint Barthelemy"]
+        } else if countryName == "Cape Verde" {
+            return data["Cabo Verde"]
+        } else if countryName == "Curaçao" {
+            return data["Curacao"]
+        } else if countryName == "Cabo Verde" {
+            return data["Cape Verde"]
+        } else if countryName == "Eswatini" {
+            return data["Swaziland"]
+        } else if countryName == "Ivory Coast" {
+            return data["Cote d'Ivoire"]
+        } else if countryName == "Bolivia" {
+            return data["Bolivia, Plurinational State of"]
+        } else if countryName == "DRC" {
+            return data["Congo, The Democratic Republic of the Congo"]
+        } else if countryName == "Palestine" {
+            return data["Paleste"]
+        } else if countryName == "Brunei" {
+            return data["Brunei Darussalam"]
         }
+
         return data[countryName]
     }
 }

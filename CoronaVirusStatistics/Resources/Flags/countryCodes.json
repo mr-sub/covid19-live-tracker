@@ -235,6 +235,11 @@
  "code": "CO"
  },
  {
+ "name": "Curacao",
+ "dial_code": "+599",
+ "code": "CW"
+ },
+ {
  "name": "Comoros",
  "dial_code": "+269",
  "code": "KM"
@@ -460,7 +465,7 @@
  "code": "HT"
  },
  {
- "name": "Holy See (Vatican City State)",
+ "name": "Vatican City",
  "dial_code": "+39",
  "code": "VA"
  },
@@ -907,7 +912,7 @@
  {
  "name": "Saint Martin",
  "dial_code": "+590",
- "code": "MF"
+ "code": "SX"
  },
  {
  "name": "Saint Pierre and Miquelon",
@@ -915,7 +920,7 @@
  "code": "PM"
  },
  {
- "name": "St. Vincent and the Grenadines",
+ "name": "St. Vincent Grenadines",
  "dial_code": "+1",
  "code": "VC"
  },
