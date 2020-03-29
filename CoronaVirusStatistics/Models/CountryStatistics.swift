@@ -15,7 +15,4 @@ struct COVID19CountryStatistics: BaseCOVID19StatisticsProtocol, Codable {
     let deaths: Int
     let todayDeaths: Int
     let recovered: Int
-    let active: Int
-    let critical: Int
-    let casesPerOneMillion: Int
 }
